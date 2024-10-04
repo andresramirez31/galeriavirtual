@@ -25,7 +25,7 @@
 
 1. Clona este repositorio:
     ```bash
-    git clone https://github.com/tu-usuario/galeria-virtual.git
+    git clone https://github.com/andresramirez31/galeria-virtual.git
     ```
 2. Dirígete a la carpeta del proyecto:
     ```bash
