@@ -8,6 +8,7 @@ import com.gamodel.galeriavirtual.service.ObraService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
@@ -24,6 +25,12 @@ public class ObraController {
     @GetMapping
     public List<Obra> getAllObras() {
         return obraService.getAllObras();
+    }
+
+    @PostMapping
+    public Obra addObra(Obra obra) {
+        return obraService.addObra(obra);
+
     }
 
 }
