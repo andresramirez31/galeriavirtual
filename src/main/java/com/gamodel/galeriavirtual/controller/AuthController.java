@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping("Api/auth")
+@RequestMapping("api/auth")
 public class AuthController {
 
     @PostMapping("/login")
