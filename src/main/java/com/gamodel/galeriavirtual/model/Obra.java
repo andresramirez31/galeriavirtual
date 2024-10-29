@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 
-@Document(collection = "Obra")  // Define la colección en MongoDB
+@Document(collection = "Obra") // Define la colección en MongoDB
 public class Obra {
 
     @Id
@@ -15,15 +15,26 @@ public class Obra {
     private String exponente;
     private List<String> palabrasClave;
     private String otros;
-    private List<String> nota;  // Ahora es un array de Strings
+    private List<String> nota; // Ahora es un array de Strings
 
     // Constructor por defecto
-    public Obra() {}
+    public Obra() {
+    }
+
+    public Obra(String nombre, String medioAudiovisual, String descripcion, String exponente,
+            List<String> palabrasClave, String otros) {
+        this.nombre = nombre;
+        this.medioAudiovisual = medioAudiovisual;
+        this.descripcion = descripcion;
+        this.exponente = exponente;
+        this.palabrasClave = palabrasClave;
+        this.otros = otros;
+    }
 
     // Constructor con parámetros
     public Obra(String nombre, String medioAudiovisual, String descripcion,
-                String exponente, List<String> palabrasClave, String otros,
-                List<String> nota) {
+            String exponente, List<String> palabrasClave, String otros,
+            List<String> nota) {
         this.nombre = nombre;
         this.medioAudiovisual = medioAudiovisual;
         this.descripcion = descripcion;
