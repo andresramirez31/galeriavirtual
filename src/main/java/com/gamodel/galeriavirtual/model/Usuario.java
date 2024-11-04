@@ -11,9 +11,12 @@ public class Usuario {
     private String nombre;
     private String rol;
     private String estado;
+    private String correo;
+    private String password;
 
     // Constructor por defecto
-    public Usuario() {}
+    public Usuario() {
+    }
 
     // Constructor con parámetros
     public Usuario(String nombre, String rol, String estado) {
@@ -22,7 +25,22 @@ public class Usuario {
         this.estado = estado;
     }
 
-    // Getters y Setters
+    public Usuario(String nombre, String rol, String estado, String correo, String password) {
+        this.nombre = nombre;
+        this.rol = rol;
+        this.estado = estado;
+        this.correo = correo;
+        this.password = password;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
     public String getId() {
         return id;
     }
@@ -63,5 +81,13 @@ public class Usuario {
                 ", rol='" + rol + '\'' +
                 ", estado='" + estado + '\'' +
                 '}';
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

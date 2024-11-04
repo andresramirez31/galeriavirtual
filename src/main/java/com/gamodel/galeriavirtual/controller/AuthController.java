@@ -9,6 +9,7 @@ import com.gamodel.galeriavirtual.model.Usuario;
 import com.gamodel.galeriavirtual.service.UsuarioService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -18,6 +19,8 @@ public class AuthController {
 
     private UsuarioService usuarioService;
 
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     public AuthController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
@@ -25,7 +28,9 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
 
-        if ("user@example.com".equals(loginRequest.getEmail()) && "password123".equals(loginRequest.getPassword())) {
+        boolean autenticado = usuarioService.authenticateUser(loginRequest.getEmail(), loginRequest.getPassword());
+
+        if (autenticado) {
             return ResponseEntity.ok("Login exitoso");
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales invalidas");
@@ -38,8 +43,10 @@ public class AuthController {
 
         try {
 
+            String encodedPassword = passwordEncoder.encode(registerRequest.getPassword());
+
             Usuario usuario = new Usuario(registerRequest.getNombre(), registerRequest.getRol(),
-                    registerRequest.getEstado());
+                    registerRequest.getEstado(), registerRequest.getCorreo(), encodedPassword);
             Usuario usuarioGuardado = usuarioService.addUsuario(usuario);
             return new ResponseEntity<>(usuarioGuardado, HttpStatus.CREATED);
 
