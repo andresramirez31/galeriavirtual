@@ -16,6 +16,8 @@ public class Obra {
     private List<String> palabrasClave;
     private String otros;
     private List<String> nota; // Ahora es un array de Strings
+    private String imageBase64;
+    private byte[] imageData;
 
     // Constructor por defecto
     public Obra() {
@@ -42,6 +44,43 @@ public class Obra {
         this.palabrasClave = palabrasClave;
         this.otros = otros;
         this.nota = nota;
+    }
+
+    public Obra(String nombre, String medioAudiovisual, String descripcion, String exponente,
+            List<String> palabrasClave, String otros, List<String> nota, String imageBase64) {
+        this.nombre = nombre;
+        this.medioAudiovisual = medioAudiovisual;
+        this.descripcion = descripcion;
+        this.exponente = exponente;
+        this.palabrasClave = palabrasClave;
+        this.otros = otros;
+        this.nota = nota;
+        this.imageBase64 = imageBase64;
+    }
+
+    public Obra(String nombre, String medioAudiovisual, String descripcion, String exponente,
+            List<String> palabrasClave, String otros, List<String> nota, String imageBase64, byte[] imageData) {
+        this.nombre = nombre;
+        this.medioAudiovisual = medioAudiovisual;
+        this.descripcion = descripcion;
+        this.exponente = exponente;
+        this.palabrasClave = palabrasClave;
+        this.otros = otros;
+        this.nota = nota;
+        this.imageBase64 = imageBase64;
+        this.imageData = imageData;
+    }
+
+    public Obra(String nombre, String medioAudiovisual, String descripcion, String exponente,
+            List<String> palabrasClave, String otros, List<String> nota, byte[] imageData) {
+        this.nombre = nombre;
+        this.medioAudiovisual = medioAudiovisual;
+        this.descripcion = descripcion;
+        this.exponente = exponente;
+        this.palabrasClave = palabrasClave;
+        this.otros = otros;
+        this.nota = nota;
+        this.imageData = imageData;
     }
 
     // Getters y Setters
@@ -122,4 +161,21 @@ public class Obra {
                 ", nota=" + nota +
                 '}';
     }
+
+    public String getImageBase64() {
+        return imageBase64;
+    }
+
+    public void setImageBase64(String imageBase64) {
+        this.imageBase64 = imageBase64;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
+    }
+
 }
