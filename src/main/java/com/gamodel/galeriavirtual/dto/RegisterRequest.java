@@ -1,5 +1,7 @@
 package com.gamodel.galeriavirtual.dto;
 
+import java.util.List;
+
 public class RegisterRequest {
 
     private String nombre;

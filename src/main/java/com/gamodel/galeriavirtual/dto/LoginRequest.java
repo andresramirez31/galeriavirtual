@@ -4,8 +4,15 @@ public class LoginRequest {
 
     private String email;
     private String password;
+    private String rol;
 
     public LoginRequest() {
+    }
+
+    public LoginRequest(String email, String password, String rol) {
+        this.email = email;
+        this.password = password;
+        this.rol = rol;
     }
 
     public LoginRequest(String email, String password) {
@@ -28,6 +35,14 @@ public class LoginRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
 }

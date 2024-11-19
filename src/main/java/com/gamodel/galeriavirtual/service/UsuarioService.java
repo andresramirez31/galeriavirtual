@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.gamodel.galeriavirtual.repository.UsuarioRepository;
 import com.gamodel.galeriavirtual.model.Usuario;
 import java.util.List;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
@@ -16,6 +17,10 @@ public class UsuarioService {
 
     public UsuarioService(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
+    }
+
+    public Usuario findByCorreo(String correo) {
+        return usuarioRepository.findByCorreo(correo);
     }
 
     public List<Usuario> getAllUsuarios() {
