@@ -2,6 +2,9 @@ package com.gamodel.galeriavirtual.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.gamodel.galeriavirtual.dto.ComentarioRequest;
+
 import java.util.List;
 
 @Document(collection = "Obra") // Define la colección en MongoDB
@@ -15,6 +18,7 @@ public class Obra {
     private String exponente;
     private List<String> palabrasClave;
     private String otros;
+    private List<ComentarioRequest> comentarios;
     private List<String> nota; // Ahora es un array de Strings
     private String imageBase64;
     private byte[] imageData;
@@ -176,6 +180,14 @@ public class Obra {
 
     public void setImageData(byte[] imageData) {
         this.imageData = imageData;
+    }
+
+    public List<ComentarioRequest> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<ComentarioRequest> comentarios) {
+        this.comentarios = comentarios;
     }
 
 }

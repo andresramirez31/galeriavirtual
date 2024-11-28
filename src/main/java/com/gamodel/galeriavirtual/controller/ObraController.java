@@ -2,7 +2,10 @@ package com.gamodel.galeriavirtual.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+import java.util.Optional;
 import java.util.Base64;
+
+import com.gamodel.galeriavirtual.dto.ComentarioRequest;
 import com.gamodel.galeriavirtual.model.Obra;
 
 import com.gamodel.galeriavirtual.service.ObraService;
@@ -36,6 +39,35 @@ public class ObraController {
             obra.setImageData(imageData);
             Obra obraGuardada = obraService.addObra(obra);
             return new ResponseEntity<>(obraGuardada, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+    @PostMapping("/comentarios")
+    public ResponseEntity<ComentarioRequest> addComentarios(@RequestBody ComentarioRequest comentario) {
+        try {
+
+            Optional<Obra> obra = obraService.getObraById(comentario.getIdOriginalObra());
+            Obra obraElegida = obra.get();
+
+            if (obraElegida.getComentarios() == null) {
+
+                List<ComentarioRequest> comentarios = List.of(comentario);
+                obraElegida.setComentarios(comentarios);
+
+            } else {
+
+                List<ComentarioRequest> comentarios = obraElegida.getComentarios();
+                comentarios.add(comentario);
+                obraElegida.setComentarios(comentarios);
+
+            }
+
+            obraService.addObra(obraElegida);
+
+            return new ResponseEntity<>(comentario, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
