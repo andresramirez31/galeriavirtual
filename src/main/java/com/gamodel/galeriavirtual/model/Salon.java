@@ -10,13 +10,15 @@ public class Salon {
     @Id
     private String id;
     private String nombre;
+    private String descSalon;
     private String fondo;
     private String fechaVigencia;
     private String sponsor;
-    private List<String> comentarios;  // Cambiado a un arreglo de Strings
+    private List<String> comentarios; // Cambiado a un arreglo de Strings
 
     // Constructor por defecto
-    public Salon() {}
+    public Salon() {
+    }
 
     // Constructor con parámetros
     public Salon(String nombre, String fondo, String fechaVigencia, String sponsor, List<String> comentarios) {
@@ -25,6 +27,13 @@ public class Salon {
         this.fechaVigencia = fechaVigencia;
         this.sponsor = sponsor;
         this.comentarios = comentarios;
+    }
+
+    public Salon(String nombre, String descSalon, String fechaVigencia, String sponsor) {
+        this.nombre = nombre;
+        this.descSalon = descSalon;
+        this.fechaVigencia = fechaVigencia;
+        this.sponsor = sponsor;
     }
 
     // Getters y Setters
@@ -86,5 +95,13 @@ public class Salon {
                 ", sponsor='" + sponsor + '\'' +
                 ", comentarios=" + comentarios +
                 '}';
+    }
+
+    public String getDescSalon() {
+        return descSalon;
+    }
+
+    public void setDescSalon(String descSalon) {
+        this.descSalon = descSalon;
     }
 }
