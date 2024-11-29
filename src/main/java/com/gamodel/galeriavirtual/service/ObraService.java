@@ -28,4 +28,13 @@ public class ObraService {
         return obraRepository.save(obra);
     }
 
+    public void deleteObra(String obraId) {
+        if (obraRepository.existsById(obraId)) {
+            obraRepository.deleteById(obraId);
+        } else {
+            throw new IllegalArgumentException("La obra con el id" + obraId + "no existe");
+        }
+
+    }
+
 }
